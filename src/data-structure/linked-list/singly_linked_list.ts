@@ -143,6 +143,33 @@ class LinkedList {
       curNode = curNode.next
     }
   }
+
+  // 递归反序遍历
+  public viewReverse (node = this.head) {
+    if (node !== null) {
+      this.viewReverse(node.next)
+      console.log(node.element)
+    }
+  }
+
+  // 反转链表
+  public reverse() {
+    let curNode = this.head
+    if (curNode === null) {
+      return null
+    }
+
+    let prevNode = null
+    let nextNode = null
+
+    while (curNode !== null) {
+      nextNode = curNode.next
+      curNode.next = prevNode
+      prevNode = curNode
+      curNode = nextNode
+    }
+    this.head = prevNode
+  }
 }
 
 const linkedList = new LinkedList()
@@ -170,3 +197,6 @@ console.log('---------------------')
 console.log(linkedList.size())
 console.log('---------------------')
 linkedList.view()
+console.log('---------------------')
+linkedList.reverse()
+linkedList.viewReverse()
