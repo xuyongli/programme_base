@@ -104,3 +104,10 @@ function LongestPalindrome2 (s: string): number {
 }
 
 console.log(LongestPalindrome2('12212321'))
+
+// 找出[1000,990000]中的所有回文数
+for (let i = 10; i <= 989; i++) {
+  const str = i.toString()
+  console.log(str + str.split('').reverse().join(''))
+}
+
