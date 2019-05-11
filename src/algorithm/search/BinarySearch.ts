@@ -8,10 +8,10 @@
 function BinarySearch(arr: number[], value: number): number {
   let left = 0
   let right = arr.length - 1
-  while (left < right) {
+  while (left <= right) {
     let middle = Math.floor((left + right) / 2)
     if (arr[middle] > value) {
-      right = middle
+      right = middle - 1
     } else if (arr[middle] < value) {
       left = middle + 1
     } else {
