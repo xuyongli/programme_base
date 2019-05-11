@@ -1,4 +1,5 @@
 // 冒泡排序
+// 时间复杂度 O(n^2)
 function bubbleSort(arr: number[]): number[] {
   for (let i = 0, len = arr.length; i < len; i++) {
     for (let j = 0; j < len; j++) {
@@ -50,5 +51,6 @@ function bubbleSort3(arr: number[]): number[] {
   return arr
 }
 
-const arr=[3,44,38,5,47,15,36,26,27,2,46,4,19,50,48]
-console.table(bubbleSort3(arr))
+console.table(bubbleSort3(
+  [3,44,38,5,47,15,36,26,27,2,46,4,19,50,48]
+))

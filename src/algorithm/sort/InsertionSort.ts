@@ -1,4 +1,5 @@
 // 插入排序
+// 时间复杂度 O(n^2)
 function InsertionSort(arr: number[]): number[] {
   let i = 1
   let len = arr.length
