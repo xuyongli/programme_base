@@ -101,4 +101,71 @@ function quickSelect4 (arr: number[], num: number): number[] {
   return retArr
 }
 const arr4 = quickSelect4([10, 5, 4, 3, 7, 8, 2, 1, 9], 4)
-console.log(arr4)
+// console.log(arr4)
+
+
+/**
+ * 有两个序列A和B,A=(a1,a2,...,ak),B=(b1,b2,...,bk)，A和B都按升序排列。对于1<=i,j<=k，求k个最小的（ai+bj）。要求算法尽量高效
+ */
+
+function quickSelect5(arrA: number[], arrB: number[], k: number): number[] {
+  const lenA = arrA.length
+  const lenB = arrB.length
+  let retArr: number[] = []
+  if (!lenA || !lenB || k <= 0 || k >= lenA * lenB) return retArr
+
+  let i = lenA
+  let j = lenB
+  //当前情况是否满足条件
+  while (i > 0 && j > 0) {
+    //移动哪一个数组的元素
+    if (arrA[i - 1] >= arrB[j - 1]) {
+      if ((i - 1) * j >= k) {
+        i--
+      } else {
+        break
+      }
+    } else {
+      if ((j - 1) * i >= k) {
+        j--
+      } else {
+        break
+      }
+    }
+  }
+  let count
+  let p, q
+  //A[i-1]>B[i-1],则先计算B元素的和,避免A[i-1]算入
+  if (arrA[i - 1] > arrB[j - 1]) {
+    count = 0
+    for (p = 0; p < i; p++) {
+      for (q = 0; q < j; q++) {
+        if (count < k) {
+          console.log('A: ' + p, 'B: ' + q)
+          retArr[count++] = arrA[p] + arrB[q]
+        } else {
+          break
+        }
+      }
+    }
+  } else {
+    count = 0
+    for (p = 0; p < j; p++) {
+      for (q = 0; q < i; q++) {
+        if (count < k) {
+          console.log('B: ' + p, 'A: ' + q)
+          retArr[count++] = arrB[p] + arrA[q]
+        } else {
+          break
+        }
+      }
+    }
+  }
+  return retArr
+}
+
+console.log(quickSelect5(
+  [1, 3, 5, 7, 9],
+  [2, 4, 6, 8, 10],
+  5
+))
