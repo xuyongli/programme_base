@@ -20,4 +20,6 @@ function quickSort(arr: number[]): number[] {
   return arr
 }
 
-console.log(quickSort([3, 5, 1, 4, 2]))
+// console.log(quickSort([3, 5, 1, 4, 2]))
+
+export default quickSort
