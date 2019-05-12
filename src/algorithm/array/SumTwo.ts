@@ -11,7 +11,7 @@ type ResultItem = [number, number]
 // 数组有序
 // 二分法查找
 // 时间复杂度为 O(n * log(n))，空间复杂度为 O(1)
-import BinarySearch from '../search/BinarySearch'
+import BinarySearch from '../search/binarySearch'
 function TwoSumOfSortedArray(arr: number[], sum: number): Array<ResultItem> {
   let retArr: Array<ResultItem> = []
   const arrLen = arr.length

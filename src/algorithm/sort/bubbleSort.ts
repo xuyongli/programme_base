@@ -17,14 +17,14 @@ function bubbleSort2(arr: number[]): number[] {
   let i = arr.length - 1 //初始时,最后位置保持不变
   let j, pos
   while (i > 0) {
-    pos= 0 //每趟开始时,无记录交换
+    pos = 0 //每趟开始时,无记录交换
     for (j = 0; j < i; j++) {
       if (arr[j] > arr[j + 1]) {
-        pos= j //记录交换的位置
         ;[arr[j], arr[j + 1]] = [arr[j + 1], arr[j]]
+        pos = j //记录交换的位置，这个位置后的元素有序
       }
     }
-    i = pos; //为下一趟排序作准备
+    i = pos //为下一趟排序作准备
   }
   return arr
 }

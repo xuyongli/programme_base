@@ -2,12 +2,12 @@
 // 时间复杂度 O(n^2)
 function selectionSort(arr:number[]): number[] {
   const len = arr.length
-  let min
-  for (var i = 0; i < len - 1; i++) {
+  let min, i, j
+  for (i = 0; i < len - 1; i++) {
     min = i
-    for (var j = i + 1; j < len; j++) {
+    for (j = i + 1; j < len; j++) {
       if (arr[j] < arr[min]) { //寻找最小的数
-        min = j; //将最小数的索引保存
+        min = j //将最小数的索引保存
       }
     }
     ;[arr[i], arr[min]] = [arr[min], arr[i]]
