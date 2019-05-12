@@ -1,6 +1,6 @@
-class LinkNode {
+class SinglyLinkNode {
   public element: any
-  public next: null | LinkNode
+  public next: null | SinglyLinkNode
 
   constructor(element: any) {
     this.element = element
@@ -8,9 +8,9 @@ class LinkNode {
   }
 }
 
-class LinkedList {
+class singlyLinkedList {
   private length: number
-  private head: LinkNode | null
+  private head: SinglyLinkNode | null
   constructor () {
     this.length = 0
     this.head = null
@@ -24,8 +24,8 @@ class LinkedList {
     return this.length === 0
   }
 
-  public add (element: any): LinkNode {
-    const node = new LinkNode(element)
+  public add (element: any): SinglyLinkNode {
+    const node = new SinglyLinkNode(element)
     if (this.head === null) {
       this.head = node
     } else {
@@ -39,7 +39,7 @@ class LinkedList {
     return node
   }
 
-  public remove (element: any): LinkNode | null {
+  public remove (element: any): SinglyLinkNode | null {
     let curNode = this.head
     let prevNode
     if (curNode === null) {
@@ -88,7 +88,7 @@ class LinkedList {
   }
 
   public addAt (element: any, index: number): boolean {
-    const node = new LinkNode(element)
+    const node = new SinglyLinkNode(element)
     let curNode = this.head
     if (index < 0 || index > this.length) {
       return false
@@ -172,7 +172,7 @@ class LinkedList {
   }
 }
 
-const linkedList = new LinkedList()
+const linkedList = new singlyLinkedList()
 console.log(linkedList.isEmpty())
 console.log('---------------------')
 linkedList.add(2)
