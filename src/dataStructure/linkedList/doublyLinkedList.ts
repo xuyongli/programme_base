@@ -151,6 +151,30 @@ class DoublyLinkedList {
     return curNode
   }
 
+  public reverse() {
+    let currNode = this.head
+    let prevNode = null
+    let nextNode = null
+
+    while (currNode) {
+      // Store next node.
+      nextNode = currNode.next
+      prevNode = currNode.prev
+
+      // Change next node of the current node so it would link to previous node.
+      currNode.next = prevNode
+      currNode.prev = nextNode
+
+      // Move prevNode and currNode nodes one step forward.
+      prevNode = currNode
+      currNode = nextNode
+    }
+
+    // Reset head and tail.
+    this.tail = this.head
+    this.head = prevNode
+  }
+
   public display () {
     let curNode = this.head
     let i = 1
@@ -185,7 +209,12 @@ console.log('---------------------')
 console.log(doublyLinkedList.size())
 console.log('---------------------')
 doublyLinkedList.display()
+console.log('---------------------')
 console.log(doublyLinkedList.deleteHead())
 console.log(doublyLinkedList.deleteTail())
 console.log(doublyLinkedList.deleteElement(4))
+console.log('---------------------')
+doublyLinkedList.display()
+console.log('---------------------')
+doublyLinkedList.reverse()
 doublyLinkedList.display()
