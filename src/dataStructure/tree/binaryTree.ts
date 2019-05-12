@@ -1,9 +1,10 @@
-class TreeNode {
-  private value: any
-  public left: TreeNode | null
-  public right: TreeNode | null
+class BinaryTreeNode {
+  private value: number
 
-  constructor (value: any) {
+  public left: BinaryTreeNode | null
+  public right: BinaryTreeNode | null
+
+  constructor (value: number) {
     this.value = value
     this.left = null
     this.right = null
@@ -12,7 +13,7 @@ class TreeNode {
   /**
    * search
    */
-  public search(value: any): TreeNode | null {
+  public search(value: number): BinaryTreeNode | null {
     if (this.value === value) {
       return this
     } else if (value < this.value && this.left) {
@@ -39,7 +40,7 @@ class TreeNode {
   /**
    * add
    */
-  public add(node: TreeNode) {
+  public add(node: BinaryTreeNode) {
     if (node.value < this.value) {
       if (this.left === null) {
         this.left = node
@@ -56,8 +57,8 @@ class TreeNode {
   }
 }
 
-class Tree {
-  root: TreeNode | null
+class BinaryTree {
+  root: BinaryTreeNode | null
 
   constructor () {
     this.root = null
@@ -76,7 +77,7 @@ class Tree {
   /**
    * search
    */
-  public search(value: any): TreeNode | null {
+  public search(value: number): BinaryTreeNode | null {
     if (this.root === null) {
       throw new Error('Empty Tree')
     }
@@ -86,8 +87,8 @@ class Tree {
   /**
    * add
    */
-  public add(value: any): TreeNode {
-    const node = new TreeNode(value)
+  public add(value: number): BinaryTreeNode {
+    const node = new BinaryTreeNode(value)
     if (this.root === null) {
       this.root = node
     } else {
@@ -97,13 +98,13 @@ class Tree {
   }
 }
 
-var bst = new Tree()
-bst.add(6)
-bst.add(3)
-bst.add(9)
-bst.add(2)
-bst.add(8)
-bst.add(4)
-bst.traverse()
+const binaryTree = new BinaryTree()
+binaryTree.add(6)
+binaryTree.add(3)
+binaryTree.add(9)
+binaryTree.add(2)
+binaryTree.add(8)
+binaryTree.add(4)
+binaryTree.traverse()
 
-console.log(bst.search(8))
+console.log(binaryTree.search(8))
