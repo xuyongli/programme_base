@@ -8,7 +8,7 @@ class SinglyLinkNode {
   }
 }
 
-class singlyLinkedList {
+class SinglyLinkedList {
   private length: number
   private head: SinglyLinkNode | null
   constructor () {
@@ -172,7 +172,9 @@ class singlyLinkedList {
   }
 }
 
-const linkedList = new singlyLinkedList()
+export default SinglyLinkedList
+
+const linkedList = new SinglyLinkedList()
 console.log(linkedList.isEmpty())
 console.log('---------------------')
 linkedList.add(2)
