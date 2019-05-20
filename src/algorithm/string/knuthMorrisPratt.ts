@@ -49,5 +49,5 @@ function buildPatternTable(word: string): number[] {
   return patternTable
 }
 
-console.log(knuthMorrisPratt('aaaaaabbbbb', 'aabb'))
+console.log(knuthMorrisPratt('ababababca', 'abababca'))
 
