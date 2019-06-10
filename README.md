@@ -4,8 +4,8 @@ algorithm and data structure
 # 运行
 
 ```bash
-$ git clone git@github.com:xuyongli/programme.git
-$ cd programme
+$ git clone git@github.com:xuyongli/programme_base.git
+$ cd programme_base
 $ npm i
 $ code .
 ```
