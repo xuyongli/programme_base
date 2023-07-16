@@ -24,19 +24,3 @@ console.log(quickSort([3, 5, 1, 4, 2]))
 
 export default quickSort
 
-
-function sort(left: number, right: number, arr: number[]) {
-    if (left >= right) return;
-    let i = left, j = right;
-    const base = arr[j];
-    while(i < j) {
-        while(i < j && arr[i] <= base) i++;
-        arr[j] = arr[i];
-        while(j > i && arr[j] >= base) j--;
-        arr[i] = arr[j];
-    }
-
-    arr[j] = base;
-    sort(left, j - 1, arr);
-    sort(j + 1, right, arr);
-}

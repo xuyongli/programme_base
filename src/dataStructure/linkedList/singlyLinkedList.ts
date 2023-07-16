@@ -1,204 +1,216 @@
 class SinglyLinkNode {
-  public element: any
-  public next: null | SinglyLinkNode
+  public element: any;
+  public next: null | SinglyLinkNode;
 
   constructor(element: any) {
-    this.element = element
-    this.next = null
+    this.element = element;
+    this.next = null;
   }
 }
 
 class SinglyLinkedList {
-  private length: number
-  private head: SinglyLinkNode | null
-  constructor () {
-    this.length = 0
-    this.head = null
+  private length: number;
+  public head: SinglyLinkNode | null;
+  constructor() {
+    this.length = 0;
+    this.head = null;
   }
 
-  public size (): number {
-    return this.length
+  public size(): number {
+    return this.length;
   }
 
-  public isEmpty (): boolean {
-    return this.length === 0
+  public isEmpty(): boolean {
+    return this.length === 0;
   }
 
-  public add (element: any): SinglyLinkNode {
-    const node = new SinglyLinkNode(element)
+  public add(element: any): SinglyLinkNode {
+    const node = new SinglyLinkNode(element);
     if (this.head === null) {
-      this.head = node
+      this.head = node;
     } else {
-      let curNode = this.head
-      while(curNode.next) {
-        curNode = curNode.next
+      let curNode = this.head;
+      while (curNode.next) {
+        curNode = curNode.next;
       }
-      curNode.next = node
+      curNode.next = node;
     }
-    this.length++
-    return node
+    this.length++;
+    return node;
   }
 
-  public remove (element: any): SinglyLinkNode | null {
-    let curNode = this.head
-    let prevNode
+  public remove(element: any): SinglyLinkNode | null {
+    let curNode = this.head;
+    let prevNode;
     if (curNode === null) {
-      return null
+      return null;
     }
     if (curNode.element === element) {
-      this.head = curNode.next
+      this.head = curNode.next;
     } else {
       while (curNode && curNode.element !== element) {
-        prevNode = curNode
-        curNode = curNode.next
+        prevNode = curNode;
+        curNode = curNode.next;
       }
       if (curNode && prevNode) {
-        prevNode.next = curNode.next
+        prevNode.next = curNode.next;
       }
     }
-    this.length--
-    return curNode
+    this.length--;
+    return curNode;
   }
 
-  public indexOf (element: any) : number {
-    let curNode = this.head
-    let index = -1
+  public indexOf(element: any): number {
+    let curNode = this.head;
+    let index = -1;
     while (curNode !== null) {
-      index++
+      index++;
       if (curNode.element === element) {
-        return index + 1
+        return index + 1;
       }
-      curNode = curNode.next
+      curNode = curNode.next;
     }
-    return -1
+    return -1;
   }
 
-  public find (index: number): any {
-    let curNode = this.head
+  public find(index: number): any {
+    let curNode = this.head;
     if (curNode === null || index < 1 || index > this.length) {
-      return undefined
+      return undefined;
     }
     while (curNode && --index > 0) {
-      curNode = curNode.next
+      curNode = curNode.next;
     }
     if (curNode) {
-      return curNode.element
+      return curNode.element;
     }
-    return undefined
+    return undefined;
   }
 
-  public addAt (element: any, index: number): boolean {
-    const node = new SinglyLinkNode(element)
-    let curNode = this.head
+  public addAt(element: any, index: number): boolean {
+    const node = new SinglyLinkNode(element);
+    let curNode = this.head;
     if (index < 0 || index > this.length) {
-      return false
+      return false;
     }
     if (index === 0) {
-      this.head = node
-      node.next = curNode
+      this.head = node;
+      node.next = curNode;
     } else {
-      let prevNode
+      let prevNode;
       while (curNode && --index > 0) {
-        prevNode = curNode
-        curNode = curNode.next
+        prevNode = curNode;
+        curNode = curNode.next;
       }
       if (curNode) {
-        node.next = curNode
+        node.next = curNode;
         if (prevNode) {
-          prevNode.next = node
+          prevNode.next = node;
         }
       }
     }
-    this.length++
-    return true
+    this.length++;
+    return true;
   }
 
-  public removeAt (index: number): any {
-    let curNode = this.head
+  public removeAt(index: number): any {
+    let curNode = this.head;
     if (curNode === null || index < 1 || index > this.length) {
-      return null
+      return null;
     }
     if (index === 1) {
-      this.head = curNode.next
+      this.head = curNode.next;
     }
-    let prevNode
+    let prevNode;
     while (curNode && --index > 0) {
-      prevNode = curNode
-      curNode = curNode.next
+      prevNode = curNode;
+      curNode = curNode.next;
     }
     if (curNode && prevNode) {
-      prevNode.next = curNode.next
+      prevNode.next = curNode.next;
     }
     if (curNode) {
-      this.length--
-      return curNode.element
+      this.length--;
+      return curNode.element;
     }
-    return null
+    return null;
   }
 
-  public view () {
-    let curNode = this.head
-    while(curNode !== null) {
-      console.log(curNode.element)
-      curNode = curNode.next
+  public view() {
+    let curNode = this.head;
+    while (curNode !== null) {
+      console.log(curNode.element);
+      curNode = curNode.next;
     }
   }
 
   // 递归反序遍历
-  public viewReverse (node = this.head) {
+  public viewReverse(node = this.head) {
     if (node !== null) {
-      this.viewReverse(node.next)
-      console.log(node.element)
+      this.viewReverse(node.next);
+      console.log(node.element);
     }
   }
 
   // 反转链表
   public reverse() {
-    let curNode = this.head
+    let curNode = this.head;
     if (curNode === null) {
-      return null
+      return null;
     }
 
-    let prevNode = null
-    let nextNode = null
+    let prevNode = null;
+    let nextNode = null;
 
     while (curNode !== null) {
-      nextNode = curNode.next
-      curNode.next = prevNode
-      prevNode = curNode
-      curNode = nextNode
+      nextNode = curNode.next;
+      curNode.next = prevNode;
+      prevNode = curNode;
+      curNode = nextNode;
     }
-    this.head = prevNode
+    this.head = prevNode;
   }
 }
 
-export default SinglyLinkedList
+export default SinglyLinkedList;
 
-const linkedList = new SinglyLinkedList()
-console.log(linkedList.isEmpty())
-console.log('---------------------')
-linkedList.add(2)
-linkedList.add(5)
-linkedList.add(8)
-linkedList.add(12)
-linkedList.add(17)
-console.log(linkedList.isEmpty())
-console.log('---------------------')
-console.log(linkedList.size())
-console.log('---------------------')
-console.log(linkedList.removeAt(4))
-console.log('---------------------')
-linkedList.addAt(-1, 0)
-console.log(linkedList.indexOf(-1))
-console.log('---------------------')
-console.log(linkedList.removeAt(1))
-console.log('---------------------')
-linkedList.addAt(15, 4)
-console.log(linkedList.find(4))
-console.log('---------------------')
-console.log(linkedList.size())
-console.log('---------------------')
-linkedList.view()
-console.log('---------------------')
-linkedList.reverse()
-linkedList.viewReverse()
+const linkedList = new SinglyLinkedList();
+console.log(linkedList.isEmpty());
+console.log("---------------------");
+linkedList.add(2);
+linkedList.add(5);
+linkedList.add(8);
+linkedList.add(12);
+linkedList.add(17);
+console.log(linkedList.isEmpty());
+console.log("---------------------");
+console.log(linkedList.size());
+console.log("---------------------");
+console.log(linkedList.removeAt(4));
+console.log("---------------------");
+linkedList.addAt(-1, 0);
+console.log(linkedList.indexOf(-1));
+console.log("---------------------");
+console.log(linkedList.removeAt(1));
+console.log("---------------------");
+linkedList.addAt(15, 4);
+console.log(linkedList.find(4));
+console.log("---------------------");
+console.log(linkedList.size());
+console.log("---------------------");
+linkedList.view();
+console.log("---------------------");
+linkedList.reverse();
+linkedList.viewReverse();
+
+// function reverseList(head: SinglyLinkNode | null) {
+//   let pre = null;
+//   let cur = head;
+//   while (cur) {
+//     const next = cur.next;
+//     cur.next = pre;
+//     pre = cur;
+//     cur = next;
+//   }
+//   return pre;
+// }
