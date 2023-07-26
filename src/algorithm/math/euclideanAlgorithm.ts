@@ -9,4 +9,14 @@ export default function euclideanAlgorithm(originalA: number, originalB: number)
   return (b === 0) ? a : euclideanAlgorithm(b, a % b);
 }
 
-// console.log(euclideanAlgorithm(12, 18))
+function euclideanAlgorithm2(a: number, b: number) {
+  a = Math.abs(a);
+  b = Math.abs(b);
+  while(b) {
+    [a, b] = [b, a % b];
+  }
+  return a;
+}
+
+// console.log(euclideanAlgorithm2(12, 18));
+// console.log(euclideanAlgorithm2(12, -18));

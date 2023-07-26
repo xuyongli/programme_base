@@ -1,9 +1,9 @@
+// 并发请求限制
 class Scheduler {
   constructor(limit) {
     this.limit = limit;
     this.queue = [];
-    this.running = [];
-    this.isRunning = false;
+    this.running = 0;
   }
 
   add(callback) {
@@ -12,24 +12,27 @@ class Scheduler {
   }
 
   run() {
-    while (this.running.length < this.limit && this.queue.length) {
+    while (this.running < this.limit && this.queue.length) {
       const callback = this.queue.shift();
-      const promise = callback();
-      promise.then(() => {
-        const idx = this.running.indexOf(promise);
-        idx > -1 && this.running.splice(idx, 1);
+      callback().then(() => {
+      }).catch(() => {
+      }).finally(() => {
+        this.running--;
         this.run();
       });
-      this.running.push(promise);
+      this.running++;
     }
   }
 }
+
+const start = Date.now();
+
 // 异步任务函数
 const fetchUser = (name, delay) => {
   return () =>
     new Promise((resolve) => {
       setTimeout(() => {
-        console.log(name);
+        console.log(name, delay, Date.now() - start);
         resolve();
       }, delay);
     });
